@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<path class="filler" d="M12,22A10,10,0,0,1,12,2c5.514,0,10,4.037,10,9a6.006,6.006,0,0,1-6,6H14.23a.5.5,0,0,0-.5.5.506.506,0,0,0,.128.327A2.5,2.5,0,0,1,12,22ZM12,4a8,8,0,0,0,0,16,.5.5,0,0,0,.5-.5.517.517,0,0,0-.137-.345A2.494,2.494,0,0,1,14.23,15H16a4,4,0,0,0,4-4C20,7.141,16.411,4,12,4Z"></path>
+<circle class="filler" cx="6.5" cy="10.5" r="1.5"></circle>
+<circle class="filler" cx="9.5" cy="6.5" r="1.5"></circle>
+<circle class="filler" cx="14.5" cy="6.5" r="1.5"></circle>
+<circle class="filler" cx="17.5" cy="10.5" r="1.5"></circle>
+</svg>

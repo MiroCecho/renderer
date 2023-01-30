@@ -5,13 +5,23 @@
   <link rel="icon" type="image/x-icon" href="./icons/logo.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   <title>Testovanie redline</title>
 </head>
 <body>
-    <button id="btTest">test</button>
-    <p id="info">
-        info ...
-    </p>
-    <script type="module" src="./src/index.ts"></script>
+  <header>
+    <button type="button" class="btn btn-primary" id="btInit">Init</button>
+    <button type="button" class="btn btn-secondary" id="btLoad">Load drawing</button>
+    <button type="button" class="btn btn-success" id="btRedline">Redline Bar</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light" id="getSize">size</button>
+    <button type="button" class="btn btn-dark" id="testDb">testDB</button>
+    <button type="button" class="btn btn-dark" id="btTest">test</button>
+  </header>
+  <main id="micro-drawing">
+  </main>
+  <script type="module" src="./src/index.ts"></script>
 </body>
 </html>

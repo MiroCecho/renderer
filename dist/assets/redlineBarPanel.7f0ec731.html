@@ -1,0 +1,296 @@
+<body>
+    <div id="rdlToolbar" class="disable-select" style="display: none;">
+        <button f="select" tip="Jednoduchý výber redline prvkov"
+            class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="modify" tip="Editácia redline prvkov"
+            class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="remove" tip="Zmazanie vybraných prvkov"
+            class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="lineString" tip="Nástroj 'Čiara'" expandable
+            class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="shape" tip="Nástroj 'Uzavretý útvar'" expandable
+            class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="circle" tip="Nástroj 'Kruh'" expandable class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="text" tip="Nástroj 'Text'" expandable class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="stroke-picker" tip="Parametre štýlu čiary"
+            class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="fill-picker" tip="Parametre štýlu výplne"
+            class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="copy" tip="Kopírovanie vybraných prvkov redline"
+            class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="move-top" tip="Presun prvku na vrch"
+            class="btn btn-secondary btn-light btn-outline-secondary "></button>
+        <button f="snap" tip="Snap redline prvkov" class="btn btn-secondary btn-light btn-outline-secondary "></button>
+    </div>
+    <div id="rdl-stroke-manager" class="rdl-content-manager disable-select" style="display: none;">
+        <!-- <div id="rdl-stroke-manager" class="rdl-content-manager"></div> -->
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2" key="stroke" style="width: 40px;">Stroke:</th>
+                </tr>
+                <tr>
+                    <td id="rdl-stroke-picker"
+                        style="background-color:#ff8000;overflow: hidden;white-space: nowrap;margin: 0;padding: 0;">
+                        <input type="color" value="#ff8000"
+                            style="position: relative;left: 0;top: 0;width: 100%;margin: 0;padding: 0;opacity: 0;"
+                            key="stroke">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2" key="stroke-width">Width:</th>
+                </tr>
+                <tr>
+                    <td style="overflow: hidden;">
+                        <input class="style-setter" type="number" key="stroke-width" style="width: 40px" value="2"
+                            min="1" max="10">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2" key="stroke-dasharray">Style:</th>
+                </tr>
+                <tr>
+                    <td style="overflow: hidden;">
+                        <input class="style-setter" type="number" key="stroke-dasharray" style="width: 40px" value="0"
+                            min="0" max="6">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2" key="stroke-opacity">Opacity:</th>
+                </tr>
+                <tr>
+                    <td style="overflow: hidden;">
+                        <input class="style-setter" type="number" key="stroke-opacity" style="width: 45px" value="0"
+                            min="0" max="1" step="0.1">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Preview:</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="rdl-stroke-preview" style="height: 20px;background-color: black;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="50px" height="30px"
+                                version="1.1">
+                                <path id="stroke" stroke="#fff" stroke-width="1" d="M0 10 h60"></path>
+                            </svg>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="rdl-fill-manager" class="rdl-content-manager disable-select" style="display:none;">
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2" key="fill" style="width: 40px;">Fill:</th>
+                </tr>
+                <tr>
+                    <td id="rdl-fill-picker"
+                        style="background-color:#f00;overflow: hidden;white-space: nowrap;margin: 0;padding: 0;">
+                        <input type="color" value="#ff0000"
+                            style="position: relative;left: 0;top: 0;width: 100%;margin: 0;padding: 0;opacity: 0;"
+                            key="fill">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2" key="fill-opacity">Opacity:</th>
+                </tr>
+                <tr>
+                    <td style="overflow: hidden;">
+                        <input class="style-setter" type="number" style="width: 45px" value="0" min="0" max="1"
+                            step="0.1" key="fill-opacity">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2">apply/remove</th>
+                </tr>
+                <tr>
+                    <td style="cursor: pointer;" class="rdl-style-apply" key="fill-add">✔</td>
+                    <td style="cursor: pointer;" class="rdl-style-apply" key="fill-remove">✘</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="rdl-snap-manager" class="rdl-content-manager disable-select" style="display:none;">
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2">Shadow:</th>
+                </tr>
+                <tr>
+                    <td class="rdl-style-apply" key="shadow">
+                        <input type="checkbox">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2">Snap:</th>
+                </tr>
+                <tr>
+                    <td class="rdl-style-apply" key="snap">
+                        <input type="checkbox">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2">Show:</th>
+                </tr>
+                <tr>
+                    <td class="rdl-style-apply" key="show">
+                        <input type="checkbox">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="rdl-textPickerBox" class="btn-light disable-select" style="display:none;">
+        <div class="input-group mb-0" header>
+            <p>Text dialog</p>
+            <button class="btn btn-link" key="draw-text">Draw</button>
+        </div>
+        <div class="input-group mb-1">
+            <span class="input-group-text">Font</span>
+            <select key="textFont">
+                <option value="Tahoma">Tahoma</option>
+                <option value="Arial">Arial</option>
+                <option value="Courier">Courier</option>
+                <option value="Sans-serif">Sans-serif</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+            <span class="input-group-text">Align</span>
+            <select name="textJust" key="textJust">
+                <option value="LT">Left Top</option>
+                <option value="LC">Left Center</option>
+                <option value="LB">Left Bottom</option>
+                <option value="CT">Center Top</option>
+                <option value="CC">Center Center</option>
+                <option value="CB">Center Bottom</option>
+                <option value="RT">Right Top</option>
+                <option value="RC">Right Center</option>
+                <option value="RB">Right Bottom</option>
+            </select>
+        </div>
+        <div class="input-group mb-2">
+            <span class="input-group-text">Size</span>
+            <input class="tx-Input" type="number" key="fontSize" value="15" min="0" def-value="15" title="15"
+                style="width: 60px">
+            <span class="input-group-text">Gap</span>
+            <input class="tx-Input" type="number" key="lineGap" value="0" min="0" def-value="0" title="0"
+                style="width: 60px">
+            <span class="input-group-text">Angle</span>
+            <input class="tx-Input" type="number" key="textRotation" value="0" min="0" title="0" max="359" step="5">
+        </div>
+        <div id="switch-text-edit">
+            <div class="input-group">
+                <textarea f="input" class="form-control text-right" cols="40" rows="4" placeholder="Text do grafiky"
+                    aria-label="With textarea" spellcheck="false"></textarea>
+            </div>
+            <div class="input-group mb-2" footer>
+                <button key="font_bold">bold</button>
+                <button key="font_underline" style="text-decoration:underline">underline</button>
+                <button key="font_italic" style="font-style: italic;">italic</button>
+                <span id="rdl-textColor"
+                    style="display: inline-block;overflow: hidden;width: 20px;height: 20px; position: relative;top:5px;border: solid 1px #000;margin-right: 5px;">
+                    <input class="tx-Input" key="textColor"
+                        style="padding: 0px;position: relative;left: -5px;top:-5px;width: 30px;height:30px ;"
+                        type="color" value="#00cc00">
+                </span>
+                <button key="applyOnSelected">On selected</button>
+            </div>
+        </div>
+        <div footer id="apply-sel-changes" style="display: none;">
+            <div class="input-group">
+                <table id="rdl-font-checker">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="set-text-font">Font: </label>
+                                <input type="checkbox" id="set-text-font">
+                            </td>
+                            <td>
+                                <label for="set-text-align">Align: </label>
+                                <input type="checkbox" id="set-text-align">
+                            </td>
+                            <td>
+                                <label for="set-text-size">Size: </label>
+                                <input type="checkbox" id="set-text-size">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="set-text-lineGap">Lines gap: </label>
+                                <input type="checkbox" id="set-text-lineGap">
+                            </td>
+                            <td>
+                                <label for="set-text-angle">Angle: </label>
+                                <input type="checkbox" id="set-text-angle">
+                            </td>
+                            <td>
+                                <label for="set-text-bold">Bold: </label>
+                                <input type="checkbox" id="set-text-bold">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="set-text-undeline">Underline: </label>
+                                <input type="checkbox" id="set-text-undeline">
+                            </td>
+                            <td>
+                                <label for="set-text-italic">Italic: </label>
+                                <input type="checkbox" id="set-text-italic">
+                            </td>
+                            <td>
+                                <label for="set-text-color">Color: </label>
+                                <input type="checkbox" id="set-text-color">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="input-group mb-2" footer>     
+                <button class="btn-sm"  key="clear" left>Clear</button>
+                <span>
+                    <button  key="apply" right>Apply</button>
+                    <button  key="cancel" right>Hide options</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="redline-accept-button" class="rdl-content-manager disable-select" style="z-index: 110;display:none">
+        <button class="btn btn-warning">Accept</button>
+    </div>
+</body>
